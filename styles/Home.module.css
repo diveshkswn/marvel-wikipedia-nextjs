@@ -1,0 +1,45 @@
+.container {
+    font-family   : inherit;
+    width         : 100vw;
+    min-height    : 80vh;
+    display       : flex;
+    align-items   : center;
+    flex-direction: column;
+
+}
+
+
+.SearchAndResultContainer {
+    width          : 80vw;
+    height         : 100px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+}
+
+
+.SearchContainer {
+    display       : flex;
+    flex-direction: row;
+
+
+}
+
+.SearchContainer button {
+    margin-left: 20px;
+}
+
+.CharactersList {
+    margin        : 40px;
+    width         : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+
+}
+
+@media(max-width:400px) {
+    .SearchAndResultContainer {
+        flex-direction: column;
+    }
+}

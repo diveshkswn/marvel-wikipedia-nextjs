@@ -1,0 +1,40 @@
+.MainContainer {
+    min-height      : 101vh;
+    display         : flex;
+    flex-direction  : column;
+    background-color: var(--bg-color);
+    position        : relative;
+}
+
+
+.Content {
+    flex      : 1;
+    min-height: 99vh;
+}
+
+
+.MainContainer>video {
+    position  : absolute;
+    object-fit: fill;
+    height    : 100%;
+    width     : 100%;
+    animation : marvelAnimation 4s forwards 1 ease-in;
+}
+
+
+@keyframes marvelAnimation {
+    from {
+        opacity: 1;
+
+    }
+
+    90% {
+        z-index: 1;
+    }
+
+    to {
+        opacity   : 0;
+        z-index   : -1;
+        visibility: hidden;
+    }
+}

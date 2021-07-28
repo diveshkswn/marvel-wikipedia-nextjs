@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+
+html,
+
+:root {
+  --footer-bg-color    : #1A202C;
+  --card-bg-color      : #FFFF;
+  --card-bg-color-hover: rgb(250, 250, 250);
+  --bg-color           : #F6F6F6
+}
+
+
+.dark {
+  --bg-color: #1A202C
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x     : hidden;
+  padding        : 0;
+  margin         : 0;
+  font-family    : 'Baloo Chettan 2', cursive;
+}
+
+a {
+  color          : inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

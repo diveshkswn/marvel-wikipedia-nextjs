@@ -1,0 +1,23 @@
+.HeaderContainer {
+    position               : sticky;
+    top                    : 0;
+    display                : flex;
+    justify-content        : center;
+    width                  : 100vw;
+    height                 : 80px;
+    background             : rgba(255, 255, 255, 0.25);
+    backdrop-filter        : blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index                : 100;
+}
+
+.LogoImg {
+    position: relative;
+    width   : 170px;
+    height  : 100px;
+}
+
+.HeaderTitle {
+    display    : flex;
+    align-items: center;
+}
