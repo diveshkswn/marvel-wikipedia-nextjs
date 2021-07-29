@@ -92,12 +92,14 @@
     }
 
     .CharacterImgContainer {
+        height: 60vh;
         margin: 20px;
         width : 80%;
     }
 
     .CharacterDetailsContainer {
+        min-height   : 100vh;
         width        : 99vw;
-        margin-bottom: 200px;
+        margin-bottom: 50px;
     }
 }
