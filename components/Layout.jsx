@@ -1,12 +1,14 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import Header from './Header';
 import styles from '../styles/Layout.module.css';
 import Footer from './Footer';
 
 export default function Layout({ children }) {
+  const [theme, setTheme] = useState(false);
   return (
 
-    <div className={styles.MainContainer}>
+    <div className={`${styles.MainContainer}  ${theme ? 'dark' : ''}`}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -16,7 +18,7 @@ export default function Layout({ children }) {
       </video>
 
       <div className={styles.Content}>
-        <Header />
+        <Header setTheme={setTheme} />
         {children}
       </div>
 

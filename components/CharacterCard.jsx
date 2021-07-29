@@ -1,19 +1,28 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/CharacterCard.module.css';
 
-export default function CharacterCard() {
-  return (
-    <div className={styles.CharacterCardContainer}>
-      <div className={styles.CardImage}>
+export default function CharacterCard(props) {
+  const {
+    id, name, seriesCount, thumbNail,
+  } = props;
 
-        <Image src="http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg" layout="fill" objectFit="cover" alt="Character img" />
+  return (
+    <Link passHref href={`/character/${id}`}>
+      <div className={styles.CharacterCardContainer}>
+        <div className={styles.CardImage}>
+
+          <Image src={`${thumbNail}.jpg`} layout="fill" objectFit="cover" alt="Character img" />
+        </div>
+        <div className={styles.CardName}>
+          <h2>{name}</h2>
+        </div>
+        <div className={styles.ComicsCount}>
+          Series count
+          {' '}
+          {seriesCount}
+        </div>
       </div>
-      <div className={styles.CardName}>
-        <h2>Iron Man</h2>
-      </div>
-      <div className={styles.ComicsCount}>
-        Comics count 200
-      </div>
-    </div>
+    </Link>
   );
 }

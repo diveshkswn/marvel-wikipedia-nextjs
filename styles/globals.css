@@ -3,18 +3,29 @@
 html,
 
 :root {
-  --footer-bg-color    : #1A202C;
-  --card-bg-color      : #FFFF;
-  --card-bg-color-hover: rgb(250, 250, 250);
-  --bg-color           : #F6F6F6
+  --footer-bg-color: #1A202C;
+  --card-bg-color  : #FFFF;
+
+  --card-bg-color-hover  : rgb(250, 250, 250);
+  --series-bg-color      : rgb(246, 240, 255);
+  --series-bg-color-hover: rgb(240, 231, 255);
+  --bg-color             : #F6F6F6
 }
 
 
 .dark {
-  --bg-color: #1A202C
+  color                  : white !important;
+  --footer-bg-color      : #1A202C;
+  --card-bg-color        : #3C393F;
+  --card-bg-color-hover  : #323035;
+  --bg-color             : #252329;
+  --series-bg-color      : #44404b;
+  --series-bg-color-hover: #494355;
+  transition             : background-color color 2s;
 }
 
 body {
+  transition     : background-color color 2s;
   scroll-behavior: smooth;
   overflow-x     : hidden;
   padding        : 0;

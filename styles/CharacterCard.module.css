@@ -1,8 +1,10 @@
 .CharacterCardContainer {
+    cursor          : pointer;
+    margin-top      : 20px;
     padding         : 20px;
     width           : 70%;
     height          : 200px;
-    box-shadow      : 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow      : 0 4px 16px 0 rgba(31, 38, 135, 0.37);
     border-radius   : 20px;
     background-color: var(--card-bg-color);
     transition      : all 200ms;
@@ -11,6 +13,10 @@
     flex-direction : row;
     justify-content: space-between;
     align-items    : center;
+}
+
+.CharacterCardContainer:active {
+    background-color: blue;
 }
 
 .CharacterCardContainer:hover {
@@ -24,15 +30,16 @@
 .CardImage {
     overflow     : hidden;
     border-radius: 10px;
-    width        : 20vw;
+    width        : 25%;
     position     : relative;
-    height       : 90%;
+    height       : 100%;
 
 }
 
 .CardName {
-    font-size: 3vw;
-    flex     : .3;
+    font-size  : 200%;
+    font-weight: bold;
+    flex       : .3;
 
 }
 
@@ -53,4 +60,13 @@
     .ComicsCount {
         font-size: 3vw;
     }
+
+    .CharacterCardContainer {
+        width: 90%;
+    }
+
+    .CardImage {
+        width: 40%;
+    }
+
 }

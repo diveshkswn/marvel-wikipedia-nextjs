@@ -1,0 +1,34 @@
+.SeriesCardContainer {
+    min-width       : 200px;
+    min-height      : 200px;
+    background-color: var(--series-bg-color);
+    display         : flex;
+    flex-direction  : column;
+    align-items     : center;
+    justify-content : space-between;
+    padding         : 10px;
+    border-radius   : 5px;
+    transition      : background-color 200ms ease-in;
+    margin          : 0 5px;
+}
+
+
+.SeriesCardContainer:hover {
+    transition      : background-color 200ms ease-in;
+    background-color: var(--series-bg-color-hover);
+}
+
+.SeriesCardImg {
+    border-radius: 5px;
+    position     : relative;
+    overflow     : hidden;
+    width        : 90%;
+    height       : 100%;
+    margin-bottom: 3px;
+}
+
+.SeriesTitle {
+    text-align : center;
+    font-weight: bold;
+    font-size  : 90%;
+}

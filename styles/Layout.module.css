@@ -4,6 +4,7 @@
     flex-direction  : column;
     background-color: var(--bg-color);
     position        : relative;
+
 }
 
 
@@ -15,16 +16,17 @@
 
 .MainContainer>video {
     position  : absolute;
-    object-fit: fill;
+    object-fit: cover;
     height    : 100%;
     width     : 100%;
-    animation : marvelAnimation 4s forwards 1 ease-in;
+    animation : marvelAnimation 4s forwards 1 ease-out;
 }
 
 
 @keyframes marvelAnimation {
     from {
         opacity: 1;
+
 
     }
 

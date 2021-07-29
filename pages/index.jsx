@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-children-prop */
 import Head from 'next/head';
@@ -5,18 +6,52 @@ import {
   Input, InputGroup, InputLeftElement, Button,
 } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import CharacterCard from '../components/CharacterCard';
-import { getCharacterByLimit, getSeriesByCharacterId } from '../utils/apiCreator';
+import { getCharacterByLimit, getCharacterByNameAndLimit, getCharacterByLimitOffset } from '../utils/apiCreator';
 
-export default function Home() {
-  useEffect(async () => {
-    const res = await fetch(getCharacterByLimit(1));
-    const data = await res.json();
-    console.log(data);
-    console.log(getSeriesByCharacterId(1011334));
-  }, []);
+export default function Home(props) {
+  const { characterData } = props;
+  const [moreDataloading, setMoreDataloading] = useState(false);
+  const [searchLoading, setSeachLoading] = useState(false);
+  const [characterList, SetCharacterList] = useState([...characterData.data.results]);
+  const searchStringRef = useRef();
+  const [filteredCharacterList, SetFilteredCharacterList] = useState([]);
+  const offsetCountref = useRef(20);
+
+  async function loadMoreCharacters() {
+    setMoreDataloading(true);
+    const res = await fetch(`${getCharacterByLimitOffset(20, offsetCountref.current)}&orderBy=-modified`);
+    const moreLoadedData = await res.json();
+    setMoreDataloading(false);
+    SetCharacterList((val) => [...val, ...moreLoadedData?.data.results]);
+    offsetCountref.current += 20;
+  }
+
+  function populateCharacters(eachCharacter) {
+    return (
+      <CharacterCard
+        key={eachCharacter.id}
+        id={eachCharacter.id}
+        name={eachCharacter.name}
+        seriesCount={eachCharacter.series?.available}
+        thumbNail={eachCharacter.thumbnail.path}
+      />
+    );
+  }
+
+  async function displaySearchedCharacters() {
+    setSeachLoading(true);
+    const res = await fetch(getCharacterByNameAndLimit(searchStringRef.current.value, 10));
+    const searchedData = await res.json();
+    setSeachLoading(false);
+    SetFilteredCharacterList([...searchedData?.data.results]);
+  }
+
+  function clearSeachHandler() {
+    SetFilteredCharacterList([]);
+  }
 
   return (
     <div className={styles.container}>
@@ -27,7 +62,11 @@ export default function Home() {
       </Head>
       <div className={styles.SearchAndResultContainer}>
         <div className={styles.ResultCountContainer}>
-          Found 10000 characters
+          Found
+          {' '}
+          { filteredCharacterList.length > 0 ? filteredCharacterList.length : characterList?.length}
+          {' '}
+          characters
         </div>
         <div className={styles.SearchContainer}>
           <InputGroup>
@@ -35,18 +74,56 @@ export default function Home() {
               pointerEvents="none"
               children={<Search2Icon color="gray.300" />}
             />
-            <Input type="text" placeholder="Search for any character" />
+            <Input ref={searchStringRef} type="text" placeholder="Search for any character" />
           </InputGroup>
-          <Button colorScheme="teal" variant="outline">
+          <Button colorScheme="teal" variant="outline" isLoading={searchLoading} onClick={displaySearchedCharacters}>
             Search
           </Button>
+          {filteredCharacterList.length > 0 && (
+          <Button colorScheme="red" variant="ghost" onClick={clearSeachHandler}>
+            Clear Search
+          </Button>
+          ) }
+
         </div>
       </div>
 
       <div className={styles.CharactersList}>
-        <CharacterCard />
+        { filteredCharacterList.length > 0 ? filteredCharacterList.map(populateCharacters) : characterList.map(populateCharacters)}
       </div>
+
+      <Button
+        size="md"
+        height="48px"
+        width="70%"
+        border="2px"
+        bg="InfoBackground"
+        color="black"
+        borderColor="green.500"
+        isLoading={moreDataloading}
+        onClick={loadMoreCharacters}
+      >
+        Load More Characters
+      </Button>
 
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`${getCharacterByLimit(20)}&orderBy=-modified`);
+  const data = await res.json();
+
+  if (!data || (data.code !== 200 && data.code !== 201)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      characterData: data,
+    },
+    revalidate: 86400,
+  };
 }
