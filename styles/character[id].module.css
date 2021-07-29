@@ -86,6 +86,7 @@
 
 @media(max-width :800px) {
     .CharacterContainer {
+
         flex-direction: column;
         align-items   : center;
     }
@@ -96,6 +97,7 @@
     }
 
     .CharacterDetailsContainer {
-        width: 99vw;
+        width        : 99vw;
+        margin-bottom: 200px;
     }
 }
