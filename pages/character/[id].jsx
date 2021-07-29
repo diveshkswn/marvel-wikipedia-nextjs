@@ -3,13 +3,13 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
-  Skeleton, SkeletonCircle, SkeletonText, Box,
+  SkeletonCircle, SkeletonText, Box,
 } from '@chakra-ui/react';
 import { getSeriesByCharacterId, getCharacterById } from '../../utils/apiCreator';
 import SeriesList from '../../components/SeriesList';
 import styles from '../../styles/character[id].module.css';
 
-export default function CharacterDetail(props) {
+export default function CharacterDetail() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [characterData, setCharacterData] = useState([]);

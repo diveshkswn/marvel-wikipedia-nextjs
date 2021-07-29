@@ -6,7 +6,7 @@ import {
   Input, InputGroup, InputLeftElement, Button,
 } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import CharacterCard from '../components/CharacterCard';
 import { getCharacterByLimit, getCharacterByNameAndLimit, getCharacterByLimitOffset } from '../utils/apiCreator';
