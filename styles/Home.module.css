@@ -40,6 +40,7 @@
 
 @media(max-width:400px) {
     .SearchAndResultContainer {
+        width         : 89vw;
         flex-direction: column;
     }
 }

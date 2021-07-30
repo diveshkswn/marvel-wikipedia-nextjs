@@ -81,7 +81,7 @@ export default function Home(props) {
           </Button>
           {filteredCharacterList.length > 0 && (
           <Button colorScheme="red" variant="ghost" onClick={clearSeachHandler}>
-            Clear Search
+            Clear
           </Button>
           ) }
 
