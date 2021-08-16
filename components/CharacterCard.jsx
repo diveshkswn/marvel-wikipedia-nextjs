@@ -8,6 +8,7 @@ export default function CharacterCard(props) {
   } = props;
 
   return (
+    //
     <Link passHref href={`/character/${id}`}>
       <div className={styles.CharacterCardContainer}>
         <div className={styles.CardImage}>

@@ -24,6 +24,11 @@ export default function CharacterDetail() {
     );
   }
 
+  function extractContent(html) {
+    return new DOMParser().parseFromString(html, 'text/html')
+      .documentElement.textContent;
+  }
+
   useEffect(() => {
     async function fetchData() {
       const charId = router.query.id;
@@ -60,7 +65,8 @@ export default function CharacterDetail() {
       <div className={styles.CharacterDetailsContainer}>
         <div className={styles.CharacterDescription}>
           <h2>Description</h2>
-          {characterData?.description ? characterData?.description : 'No Description Available' }
+
+          {characterData?.description ? extractContent(characterData.description) : 'No Description Available' }
         </div>
         <div className={styles.CharacterSeriesContainer}>
           <div className={styles.CharacterSeriesContainerHeader}>
