@@ -15,7 +15,7 @@ export default function Header(props) {
           </div>
         </Link>
         <Text fontSize="30px">Wikipedia</Text>
-        <SunIcon w={30} height={30} marginLeft="20" onClick={() => { setTheme((v) => !v); }} />
+        <SunIcon data-testid="themeButton" w={30} height={30} marginLeft="20" onClick={() => { setTheme((v) => !v); }} />
       </div>
 
     </div>
