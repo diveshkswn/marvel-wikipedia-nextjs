@@ -10,7 +10,7 @@ export default function CharacterCard(props) {
   return (
     //
     <Link passHref href={`/character/${id}`}>
-      <div className={styles.CharacterCardContainer}>
+      <div className={styles.CharacterCardContainer} data-testid="characterCard">
         <div className={styles.CardImage}>
 
           <Image src={`${thumbNail}.jpg`} layout="fill" objectFit="cover" alt="Character img" />
